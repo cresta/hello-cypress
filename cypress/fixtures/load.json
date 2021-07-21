@@ -6,5 +6,9 @@
   "cresta": {
     "url": "https://www.cresta.com/",
     "contains": "Experts on Day One"
+  },
+  "homepoint": {
+    "url": "https://homepoint.cresta.com/",
+    "contains": "Log in"
   }
 }
