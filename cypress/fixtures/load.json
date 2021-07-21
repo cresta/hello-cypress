@@ -1,0 +1,10 @@
+{
+  "google": {
+    "url": "https://www.google.com/",
+    "contains": "Feeling Lucky"
+  },
+  "cresta": {
+    "url": "https://www.cresta.com/",
+    "contains": "Experts on Day One"
+  }
+}

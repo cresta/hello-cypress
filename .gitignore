@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Intellij
+/.idea/
+
+# cypress artifacts
+/cypress/screenshots/
+/cypress/videos/
+/cypress/hars/
+/cypress/setup-*.yaml

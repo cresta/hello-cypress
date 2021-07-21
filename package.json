@@ -1,0 +1,17 @@
+{
+  "name": "voice-regression",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "Apache License Version 2.0",
+  "scripts": {
+    "ci": "yarn cypress run --browser chrome --headless",
+    "open": "yarn cypress open"
+  },
+  "dependencies": {
+    "@neuralegion/cypress-har-generator": "^5.2.3",
+    "cypress": "8.0.0"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

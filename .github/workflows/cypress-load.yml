@@ -1,0 +1,44 @@
+name: load
+on:
+  push:
+  workflow_dispatch:
+    branches:
+  schedule:
+    - cron: "*/60 * * * *"
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # each individual run can contain test file of the same name
+      - name: Cypress run load
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          spec: cypress/integration/load/**
+          config-file: configs/ci.json
+        env:
+          CYPRESS_ENABLE_HAR: 1
+
+      - name: Archive artifacts if failed
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-artifacts-${{github.sha}}
+          path: |
+            cypress/screenshots
+            cypress/videos
+            cypress/hars
+            cypress/setup-*.yaml
+          retention-days: 1
+
+      - name: Send Notification
+        uses: bayssmekanique/action-simple-slack-notifier@v1
+        if: always()
+        with:
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          status: ${{ job.status }}
+          channel: 'albert-personal-notification'
