@@ -1,12 +1,9 @@
 const getTestSetup = () => {
   const config = Cypress.config();
   const isInteractive = config.isInteractive;
-  const timeouts = Object.fromEntries(
-    Object.entries(config).filter(([key])=>key.match(/Timeout$/))
-  );
   const browser = Cypress.browser.name;
   const enableHar = !!Cypress.env('ENABLE_HAR');
-  return {timeouts, browser, isInteractive, enableHar};
+  return {browser, isInteractive, enableHar};
 }
 
 const shouldRecordHar = () => {
